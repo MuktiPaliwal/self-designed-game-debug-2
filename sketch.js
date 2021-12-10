@@ -9,6 +9,7 @@ var gameState = 1;
 var timer = 30;
 var timeOverImg, youWinImg;
 var restartImg;
+var restart;
 
 function preload(){
   map = loadImage("./assets/map.png");
@@ -78,6 +79,9 @@ function setup() {
   computer.scale = 0.7;
   //computer.debug = true;
   computer.setCollider("rectangle", 0,0,100, 200);
+  restart = createImg("./assets/restart.png");
+  restart.position(600, 50);
+  restart.size(1, 1);
 }
 
 
@@ -238,8 +242,7 @@ function draw() {
       }, 2000);
       background(youWinImg);
     }
-    var restart = createImg("./assets/restart.png");
-    restart.position(600, 50);
+    
     restart.size(50, 50);
     restart.mouseClicked(restartF); 
   
@@ -248,5 +251,9 @@ function draw() {
 }
 
 function restartF() {
+  console.log("restart")
   gameState = 1;
+  countSnd.stop();
+  restart.size(1, 1);
+  
 }
